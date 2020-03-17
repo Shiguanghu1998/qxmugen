@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>千寻mugen</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.min.css">
+    <link rel="stylesheet" href="../iconfont/iconfont.css">
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <script>
+        $(function(){
+            var oDiv = $("nav").find(".banner");
+            var oUl = $("nav").find(".banner .frame");
+            var aBtns = $("nav").find(".banner .pointBox li");
+            var iNow = 1; //当前显示图片的下标
+            var timer = null;
+
+            //点击按钮的时候实现图片的切换
+            aBtns.click(function(){
+                iNow = $(this).index() + 1;
+                tab();
+            })
+
+
+            //自动轮播
+            timer = setInterval(function(){
+            iNow++;
+            tab();
+            }, 2000);
+
+            //封装一个切换的函数
+            function tab(){
+                aBtns.removeClass("active").eq(iNow - 1).addClass("active");
+                if(iNow == 5){
+                    aBtns.eq(0).addClass("active");
+                }
+                oUl.animate({left: (-iNow + 1) * 380}, 800, function(){
+                    if(iNow == 5){
+                    oUl.css("left", 0);
+                    iNow = 1;
+                    }
+                });
+            }
+
+
+            //移入移出
+            oDiv.mouseenter(function(){
+            clearInterval(timer);
+            }).mouseleave(function(){
+                timer = setInterval(function(){
+                iNow++;
+                tab();
+            }, 2000);
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="navigationBar">
+        <div class="navigation">
+            <a href="https://qxmugen.com/"><img src="../images/qianxun.jpg" alt=""></a>
+            <ul>
+                <a href=""><li class="navigation_li1">首页</li></a>
+                <a href=""><li class="navigation_li2">新闻公告</li></a>
+                <a href=""><li class="navigation_li3">贴吧</li></a>
+                <a href=""><li class="navigation_li4">相关站点</li></a>
+                <a href=""><li class="navigation_li5">联系我们</li></a>
+            </ul>
+            <a href=""><p class="iconfont" id="signIn">&#xe611;登录</p></a>
+            <a href=""><p class="iconfont" id="register">&#xe6a5;注册</p></a>
+        </div>
+    </div>
+    <header>
+        <ul>
+            <a href="">
+                <li class="header_li1">作品<i class="iconfont">&#xe665;</i></li>
+            </a>
+            <a href="">
+                <li class="header_li2">作者</li>
+            </a>
+            <a href="">
+                <li class="header_li3">教程知识</li>
+            </a>
+            <a href="">
+                <li class="header_li4">教程工具</li>
+            </a>
+            <a href="">
+                <li class="header_li5">人物设定</li>
+            </a>
+        </ul>
+        <input type="text" placeholder="请输入关键字搜索">
+        <a href=""><button>搜索</button></a>
+        <p>人物<i class="iconfont">&#xe665;</i></p>
+    </header>
+
+    <!-- 轮播图 -->
+    <nav>
+        <img src="../images/girl.jpg" alt="" class="girl">
+        <div class="banner">
+            <div class="frame">
+                <div>
+                    <a href=""><img src="../images/mugen1.png" alt=""></a>
+                    <p class="p1">千寻整合包下载</p>
+                </div>
+                <div>
+                    <a href=""><img src="../images/mugen2.jpg" alt=""></a>
+                    <p class="p2">官方MUGEN主程序下载</p>
+                </div>
+                <div>
+                    <a href=""><img src="../images/mugen3.jpg" alt=""></a>
+                    <p class="p3">开放本地网盘上传功能</p>
+                </div>
+                <div>
+                    <a href=""><img src="../images/mugen4.png" alt=""></a>
+                    <p class="p4">千寻辅助工具发布</p>
+                </div>
+                <div>
+                    <a href=""><img src="../images/mugen1.png" alt=""></a>
+                    <p class="p1">千寻整合包下载</p>
+                </div>
+            </div>
+            <ol class="pointBox">
+                <li class = 'active'></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ol>
+        </div>
+    </nav>
+
+    <!-- 人物 -->
+    <div class="character">
+        <div class="characterUpdate">
+            <img src="../images/人物.jpg" alt="" class="renwu">
+            <div class="update">
+                <a href=""><p class="update1">最近上传</p></a>
+                <a href=""><p class="update2">最近更新</p></a>
+                <a href=""><p class="update3">站内作者更新</p></a>
+                <a href=""></a><p class="update4">更多<i class="iconfont">&#xe625;</i></p></a>
+            </div>
+            <div class="recentlyUploaded">
+                <a href=""><div class="recentlyUploaded1">
+                    <img src="../images/sanes.jpg" alt="">
+                    <p class="time">03/13</p>
+                    <p class="actor">hk氏 更新了</p>
+                    <p class="role">sanes</p>
+                </div></a>
+                <a href=""><div class="recentlyUploaded2">
+                    <img src="../images/sanes.jpg" alt="">
+                    <p class="time">03/13</p>
+                    <p class="actor">hk氏 更新了</p>
+                    <p class="role">sanes</p>
+                </div></a>
+                <a href=""><div class="recentlyUploaded3">
+                    <img src="../images/sanes.jpg" alt="">
+                    <p class="time">03/13</p>
+                    <p class="actor">hk氏 更新了</p>
+                    <p class="role">sanes</p>
+                </div></a>
+                <a href=""><div class="recentlyUploaded4">
+                    <img src="../images/sanes.jpg" alt="">
+                    <p class="time">03/13</p>
+                    <p class="actor">hk氏 更新了</p>
+                    <p class="role">sanes</p>
+                </div></a>
+                <a href=""><div class="recentlyUploaded5">
+                    <img src="../images/sanes.jpg" alt="">
+                    <p class="time">03/13</p>
+                    <p class="actor">hk氏 更新了</p>
+                    <p class="role">sanes</p>
+                </div></a>
+                <a href=""><div class="recentlyUploaded6">
+                    <img src="../images/sanes.jpg" alt="">
+                    <p class="time">03/13</p>
+                    <p class="actor">hk氏 更新了</p>
+                    <p class="role">sanes</p>
+                </div></a>
+            </div>
+        </div>
+        <div class="ranking">
+            <div class="ranking_head">
+                <p class="month">新人月热度排行</p>
+                <p class="season">季热度总排行</p>
+            </div>
+            <div class="first">
+                <span>1</span>
+                <img src="../images/sanes.jpg" alt="">
+                <div>
+                    <a href="">
+                        <p>名称：高野莲G-X</p>
+                        <p>出处：月姬</p>
+                        <p>作者：AAA氏</p>
+                    </a>
+                </div>
+            </div>
+            <div class="other">
+                <span>2</span>
+                <div>
+                    <a href="">
+                        <p>名称：</p>
+                        <p>作者：</p>
+                    </a>
+                </div>
+            </div>
+            <div class="other">
+                <span>3</span>
+                <div>
+                    <a href="">
+                        <p>名称：</p>
+                        <p>作者：</p>
+                    </a>
+                </div>
+            </div>
+            <div class="other">
+                <span>4</span>
+                <div>
+                    <a href="">
+                        <p>名称：</p>
+                        <p>作者：</p>
+                    </a>
+                </div>
+            </div>
+            <div class="other">
+                <span>5</span>
+                <div>
+                    <a href="">
+                        <p>名称：</p>
+                        <p>作者：</p>
+                    </a>
+                </div>
+            </div>
+            <div class="other">
+                <span>6</span>
+                <div>
+                    <a href="">
+                        <p>名称：</p>
+                        <p>作者：</p>
+                    </a>
+                </div>
+            </div>
+            <div class="other">
+                <span>7</span>
+                <div>
+                    <a href="">
+                        <p>名称：</p>
+                        <p>作者：</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 作品索引 -->
+    <div class="indexes">
+        <img src="../images/作品索引.jpg" alt="">
+        <div class="indexes1">
+            <a href="">
+                <div class="quanhuang">
+                    <div></div>
+                </div>
+            </a>
+            <a href="">
+                <div class="shihun"></div>
+            </a>
+            <a href="">
+                <div class="CVS"></div>
+            </a>
+            <a href="">
+                <div class="jieba"></div>
+            </a>
+            <a href="">
+                <div class="yuehuajianshi"></div>
+            </a>
+            <a href="">
+                <div class="zhanguo"></div>
+            </a>
+        </div>
+        <a href=""><p>查看更多作品</p></a>
+    </div>
+
+    <!-- 其他资源 -->
+    <div class="article">
+        <div class="resources">
+            <img src="../images/其他资源.png" alt="" class="qitaziyuan">
+            <div class="other_resources">
+                <a href=""><p class="other_resources1">场景</p></a>
+                <a href=""><p class="other_resources2">画面包</p></a>
+                <a href=""><p class="other_resources3">动作素材</p></a>
+                <a href=""></a><p class="other_resources4">更多<i class="iconfont">&#xe625;</i></p></a>
+            </div>
+            <div class="stages">
+                <a href=""><div class="recentlyUploaded1">
+                    <img src="../images/sanes.jpg" alt="">
+                    <p class="time">03/13</p>
+                    <p class="actor">hk氏 更新了</p>
+                    <p class="role">sanes</p>
+                </div></a>
+                <a href=""><div class="recentlyUploaded2">
+                    <img src="../images/sanes.jpg" alt="">
+                    <p class="time">03/13</p>
+                    <p class="actor">hk氏 更新了</p>
+                    <p class="role">sanes</p>
+                </div></a>
+                <a href=""><div class="recentlyUploaded3">
+                    <img src="../images/sanes.jpg" alt="">
+                    <p class="time">03/13</p>
+                    <p class="actor">hk氏 更新了</p>
+                    <p class="role">sanes</p>
+                </div></a>
+                <a href=""><div class="recentlyUploaded4">
+                    <img src="../images/sanes.jpg" alt="">
+                    <p class="time">03/13</p>
+                    <p class="actor">hk氏 更新了</p>
+                    <p class="role">sanes</p>
+                </div></a>
+                <a href=""><div class="recentlyUploaded5">
+                    <img src="../images/sanes.jpg" alt="">
+                    <p class="time">03/13</p>
+                    <p class="actor">hk氏 更新了</p>
+                    <p class="role">sanes</p>
+                </div></a>
+                <a href=""><div class="recentlyUploaded6">
+                    <img src="../images/sanes.jpg" alt="">
+                    <p class="time">03/13</p>
+                    <p class="actor">hk氏 更新了</p>
+                    <p class="role">sanes</p>
+                </div></a>
+            </div>
+        </div>
+        <div class="news">
+            <div class="news_head">
+                <p class="p1">最新消息</p>
+                <a href=""><p class="p2">更多...</p></a>
+            </div>
+            <ul>
+                <li>
+                    <a href="">【人物公开】ふみⅤ３氏</a>
+                    <p>03/14</p>
+                </li>
+                <li>
+                    <a href="">【人物公开】ふみⅤ３氏</a>
+                    <p>03/14</p>
+                </li>
+                <li>
+                    <a href="">【人物公开】ふみⅤ３氏</a>
+                    <p>03/14</p>
+                </li>
+                <li>
+                    <a href="">【人物公开】ふみⅤ３氏</a>
+                    <p>03/14</p>
+                </li>
+                <li>
+                    <a href="">【人物公开】ふみⅤ３氏</a>
+                    <p>03/14</p>
+                </li>
+                <li>
+                    <a href="">【人物公开】ふみⅤ３氏</a>
+                    <p>03/14</p>
+                </li>
+                <li>
+                    <a href="">【人物公开】ふみⅤ３氏</a>
+                    <p>03/14</p>
+                </li>
+            </ul>
+            <a href="">
+                <img src="../images/广告.jpg" alt="">
+            </a>
+        </div>
+    </div>
+
+    <!-- 公告 -->
+    <div class="notice">
+        <div class="essay">
+            <div class="essay_head">
+                <p class="p1">最新文章</p>
+                <a href=""><p class="p2">更多...</p></a>
+            </div>
+            <ul>
+                <li>
+                    <a href="">MUGEN1.1 System.def 千寻汉化版</a>
+                    <div>
+                        <p class="p1">斯凯</p>
+                        <p class="p2">03/07</p>
+                    </div>
+                </li>
+                <li>
+                    <a href="">MUGEN1.1 System.def 千寻汉化版</a>
+                    <div>
+                        <p class="p1">斯凯</p>
+                        <p class="p2">03/07</p>
+                    </div>
+                </li>
+                <li>
+                    <a href="">MUGEN1.1 System.def 千寻汉化版</a>
+                    <div>
+                        <p class="p1">斯凯</p>
+                        <p class="p2">03/07</p>
+                    </div>
+                </li>
+                <li>
+                    <a href="">MUGEN1.1 System.def 千寻汉化版</a>
+                    <div>
+                        <p class="p1">斯凯</p>
+                        <p class="p2">03/07</p>
+                    </div>
+                </li>
+                <li>
+                    <a href="">MUGEN1.1 System.def 千寻汉化版</a>
+                    <div>
+                        <p class="p1">斯凯</p>
+                        <p class="p2">03/07</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="minNotice">
+            <div class="announcement">
+                <div class="announcement_head">
+                    <p class="p1">站务公告</p>
+                    <a href=""><p class="p2">更多...</p></a>
+                </div>
+                <ul>
+                    <li>
+                        <a href="">MUGEN1.1 System.def 千寻汉化版</a>
+                        <div>
+                            <p>03/07</p>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="">MUGEN1.1 System.def 千寻汉化版</a>
+                        <div>
+                            <p>03/07</p>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="">MUGEN1.1 System.def 千寻汉化版</a>
+                        <div>
+                            <p>03/07</p>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="">MUGEN1.1 System.def 千寻汉化版</a>
+                        <div>
+                            <p>03/07</p>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="">MUGEN1.1 System.def 千寻汉化版</a>
+                        <div>
+                            <p>03/07</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="contact">
+                <a href="" class="contactUs">联系我们</a>
+                <p class="provide">如果您想上传资源或为千寻平台提供其他帮助，欢迎 <a href="">点此</a> 加入千寻平台管理群(193197463)，本群谢绝围观。</p>
+                <p class="urgent">如果遇到网站无法打开等紧急情况，可以邮件至<a href="">857995137@qq.com</a>。</p>
+            </div>
+        </div>
+        <div class="donation">
+            <a href="">捐助我们</a>
+            <p class="thanks">您的捐款可以帮助网站更好地运作！</p>
+            <div class="payment">
+                <a href="" class="alipay">支付宝</a>
+                <a href="" class="weChat">微信</a>
+            </div>
+            <img src="../images/支付宝二维码.jpg" alt="">
+        </div>
+    </div>
+    <div class="game">
+        <div class="left">
+            <a href=""><img src="../images/导弹.jpg" alt="" class="missile"></a>
+            <div>
+                <a href=""><img src="../images/红.jpg" alt="" class="red"></a>
+                <a href="" class="warThunder">War Thunder</a>
+            </div>
+        </div>
+        <a href="" class="download">免费下载</a>
+        <a href="" class="immediately">立即开始免费游戏，和上千万的真实玩家</a>
+        <a href="" class="greater"><i class="iconfont">&#xe625;</i></a>
+    </div>
+
+    <!-- footer -->
+    <footer>
+        <div class="footer_top">
+            <a href="">联系我们</a>
+            <a href="">捐助我们</a>
+            <a href="">相关链接</a>
+        </div>
+        <div class="footer_bottom">
+            <p><a href="">千寻平台</a>© 2013-2020<a href="">沪ICP备15038394号-1</a></p>
+        </div>
+    </footer>
+</body>
+</html>
